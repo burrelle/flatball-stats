@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Team;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class TeamController extends Controller
 {
+    public function index()
+    {
+        $teams = Team::all();
+        return view('team.index', compact('teams'));
+    }
+
     public function create()
     {
         return view('team.create');
@@ -17,10 +25,19 @@ class TeamController extends Controller
             'name' => ['required'],
             'type' => ['required'],
         ]);
-        Team::create([
+        Auth::user()->teams()->create([
             'name' => request('name'),
             'type' => request('type')
         ]);
         return redirect()->route('teams.index');
+    }
+
+    public function destroy($team)
+    {
+        $team = Team::findOrFail($team);
+        if(Auth::user()->id === $team->id){
+            $team->delete();
+            return redirect()->route('teams.index');
+        }
     }
 }

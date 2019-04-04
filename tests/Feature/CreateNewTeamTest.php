@@ -38,15 +38,16 @@ class CreateNewTeamTest extends TestCase
     /** @test */
     public function addingValidTeam()
     {
-        $this->withExceptionHandling();
+        $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
         $response = $this->actingAs($user)->post('/teams', [
             'name' => 'Revolver',
             'type' => 'open'
         ]);
-        tap(Team::first(), function ($team) use ($response) {
+        tap(Team::first(), function ($team) use ($user, $response) {
             $response->assertStatus(302);
             $response->assertRedirect("/teams");
+            $this->assertTrue($team->user->is($user));
             $this->assertEquals('Revolver', $team->name);
             $this->assertEquals('open', $team->type);
         });
