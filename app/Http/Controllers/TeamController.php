@@ -13,6 +13,10 @@ class TeamController extends Controller
 
     public function store()
     {
+        $this->validate(request(), [
+            'name' => ['required'],
+            'type' => ['required'],
+        ]);
         Team::create([
             'name' => request('name'),
             'type' => request('type')
