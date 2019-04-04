@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/teams/new', 'TeamController@create')->middleware('auth');
+Route::post('/teams', 'TeamController@store')->middleware('auth');
+Route::get('/teams', 'TeamController@index')->name('teams.index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
