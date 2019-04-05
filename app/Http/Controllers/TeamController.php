@@ -22,7 +22,11 @@ class TeamController extends Controller
     public function show($team)
     {
         $team = Team::findOrFail($team);
-        return view('team.show', compact('team'));
+        return view('team.show', [
+            'fullTeam' => $team,
+            'handlers' => $team->getHandlers(),
+            'cutters' => $team->getCutters()
+        ]);
     }
 
     public function store()
@@ -41,7 +45,7 @@ class TeamController extends Controller
     public function destroy($team)
     {
         $team = Team::findOrFail($team);
-        if(Auth::user()->id === $team->id){
+        if (Auth::user()->id === $team->id) {
             $team->delete();
             return redirect()->route('teams.index');
         }
