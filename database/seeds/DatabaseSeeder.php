@@ -1,5 +1,8 @@
 <?php
 
+use App\Team;
+use App\User;
+use App\Player;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +14,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $user = factory(User::class)->create();
+        $team = factory(Team::class)->create([
+            'user_id' => $user->id
+        ]);
+        factory(Player::class, 14)->create([
+            'team_id' => $team->id
+        ]);
     }
 }

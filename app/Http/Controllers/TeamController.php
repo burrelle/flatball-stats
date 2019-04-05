@@ -19,6 +19,12 @@ class TeamController extends Controller
         return view('team.create');
     }
 
+    public function show($team)
+    {
+        $team = Team::findOrFail($team);
+        return view('team.show', compact('team'));
+    }
+
     public function store()
     {
         $this->validate(request(), [

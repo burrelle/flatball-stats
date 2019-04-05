@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/teams/new', 'TeamController@create')->middleware('auth');
 Route::post('/teams', 'TeamController@store')->middleware('auth');
 Route::get('/teams', 'TeamController@index')->name('teams.index');
+Route::get('/teams/{team}', 'TeamController@show');
 Route::delete('/teams/{team}', 'TeamController@destroy')->middleware('auth')->name('teams.delete');
 
 Route::get('/players/new', 'PlayerController@create')->middleware('auth');
