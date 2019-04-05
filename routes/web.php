@@ -20,6 +20,9 @@ Route::post('/teams', 'TeamController@store')->middleware('auth');
 Route::get('/teams', 'TeamController@index')->name('teams.index');
 Route::delete('/teams/{team}', 'TeamController@destroy')->middleware('auth')->name('teams.delete');
 
+Route::get('/players/new', 'PlayerController@create')->middleware('auth');
+Route::post('/players', 'PlayerController@store')->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
