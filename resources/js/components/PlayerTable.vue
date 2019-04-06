@@ -1,4 +1,7 @@
 <script>
+import CutterTable from "./CutterTable.vue";
+import AllPlayersTable from "./AllPlayersTable.vue";
+import HandlersTable from "./HandlersTable.vue";
 export default {
   data: () => ({
     selected: "all"
@@ -8,31 +11,18 @@ export default {
     const displayFilter = (selected, players, handlers, cutters) => {
       switch (selected) {
         case "all":
-          return players.map(({ name, number, gender }) => (
-            <p>
-              {name} - {number} - {gender}
-            </p>
-          ));
+          return <AllPlayersTable players={players} />;
         case "handler":
-          return Object.keys(handlers).map(handler => (
-            <p>
-              {handlers[handler].name} - {handlers[handler].number} -{" "}
-              {handlers[handler].gender}
-            </p>
-          ));
+          return <HandlersTable handlers={handlers} />;
         case "cutter":
-          return Object.keys(cutters).map(cutter => (
-            <p>
-              {cutters[cutter].name} - {cutters[cutter].number} -{" "}
-              {cutters[cutter].gender}
-            </p>
-          ));
+          return <CutterTable cutters={cutters} />;
         default:
           break;
       }
     };
 
     const { players } = this.fullteam;
+
     return (
       <div>
         <span onClick={() => (this.selected = "all")}>All Players</span>
@@ -49,5 +39,9 @@ export default {
 span {
   margin-right: 0.25rem;
   cursor: pointer;
+}
+
+span:hover {
+    text-decoration: underline;
 }
 </style>
