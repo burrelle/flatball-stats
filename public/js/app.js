@@ -1872,6 +1872,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var ALL = "all";
+var HANDLER = "handler";
+var CUTTER = "cutter";
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1914,21 +1917,24 @@ __webpack_require__.r(__webpack_exports__);
 
     var players = this.fullteam.players;
     return h("div", [h("span", {
+      "class": this.selected === ALL && "active",
       on: {
         "click": function click() {
-          return _this.selected = "all";
+          return _this.selected = ALL;
         }
       }
     }, ["All Players"]), h("span", {
+      "class": this.selected === HANDLER && "active",
       on: {
         "click": function click() {
-          return _this.selected = "handler";
+          return _this.selected = HANDLER;
         }
       }
     }, ["Handlers"]), h("span", {
+      "class": this.selected === CUTTER && "active",
       on: {
         "click": function click() {
-          return _this.selected = "cutter";
+          return _this.selected = CUTTER;
         }
       }
     }, ["Cutters"]), displayFilter(this.selected, players, this.handlers, this.cutters)]);
@@ -6394,7 +6400,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nspan {\n  margin-right: 0.25rem;\n  cursor: pointer;\n}\nspan:hover {\n    text-decoration: underline;\n}\n", ""]);
+exports.push([module.i, "\nspan {\n  margin-right: 0.25rem;\n  cursor: pointer;\n}\nspan:hover {\n  text-decoration: underline;\n}\n.active {\n  color: blue;\n}\n", ""]);
 
 // exports
 
@@ -49954,14 +49960,13 @@ if (token) {
 /*!*****************************************************!*\
   !*** ./resources/js/components/AllPlayersTable.vue ***!
   \*****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AllPlayersTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AllPlayersTable.vue?vue&type=script&lang=js& */ "./resources/js/components/AllPlayersTable.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AllPlayersTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AllPlayersTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 var render, staticRenderFns
 
 
@@ -49991,7 +49996,7 @@ component.options.__file = "resources/js/components/AllPlayersTable.vue"
 /*!******************************************************************************!*\
   !*** ./resources/js/components/AllPlayersTable.vue?vue&type=script&lang=js& ***!
   \******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
