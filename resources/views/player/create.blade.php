@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <form action="/players" method="post">
     @csrf
     <label>Name</label>
@@ -23,3 +26,4 @@
     </select>
     <button type="submit">Submit</button>
 </form>
+@endsection

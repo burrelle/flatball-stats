@@ -1,3 +1,5 @@
+@extends('layouts.app') @section('content')
+
 <form action="/teams" method="post">
     @csrf
     <label>Name</label>
@@ -10,3 +12,4 @@
     </select>
     <button type="submit">Submit</button>
 </form>
+@endsection
