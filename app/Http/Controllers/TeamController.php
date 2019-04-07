@@ -42,9 +42,9 @@ class TeamController extends Controller
         return redirect()->route('teams.index');
     }
 
-    public function destroy($team)
+    public function destroy($id)
     {
-        $team = Team::findOrFail($team);
+        $team = Team::findOrFail($id);
         if (Auth::user()->id === $team->id) {
             $team->delete();
             return redirect()->route('teams.index');

@@ -2,10 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Team;
+use App\User;
+use App\Player;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Team;
-use App\Player;
 
 class ViewTeamsTest extends TestCase
 {
@@ -30,5 +31,14 @@ class ViewTeamsTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee($team->name);
         $response->assertSee($team->type);
+    }
+
+    /** @test */
+    public function guestUserCannotSeeDeleteTeamButton()
+    {
+        $team = factory(Team::class)->create();
+        $response = $this->get('/teams');
+        $response->assertStatus(200);
+        $response->assertDontSee('Delete');
     }
 }

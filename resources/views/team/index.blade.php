@@ -1,10 +1,13 @@
-@foreach($teams as $team)
-<div>
-    <form method="post" action="{{ route('teams.delete', $team->id) }}">
-        @csrf
-        <a href="{{ '/teams/' . $team->id }}">{{ $team->name }}</a> - {{ $team->type }} -
-        <input type="hidden" name="_method" value="DELETE" />
-        <button type="submit">delete</button>
-    </form>
+<head>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+</head>
+
+<div id="app">
+    @foreach($teams as $team)
+    <team-item :team="{{ json_encode($team) }}">
+        @auth @if(Auth::user()->id === $team->user_id)
+        <delete-team-button :id="{{ $team->id }}"></delete-team-button>
+        @endif @endauth
+    </team-item>
+    @endforeach
 </div>
-@endforeach
