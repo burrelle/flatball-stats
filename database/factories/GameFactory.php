@@ -10,6 +10,8 @@ $factory->define(Game::class, function (Faker $faker) {
             return factory(Team::class)->create()->id;
         },
         'opponent' => $faker->word,
-        'tournament' => $faker->word
+        'tournament' => $faker->word,
+        'score' => 15,
+        'opponent_score' => $faker->numberBetween(0, 14)
     ];
 });

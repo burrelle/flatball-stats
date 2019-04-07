@@ -1,5 +1,6 @@
 <?php
 
+use App\Game;
 use App\Team;
 use App\User;
 use App\Player;
@@ -19,6 +20,9 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user->id
         ]);
         factory(Player::class, 14)->create([
+            'team_id' => $team->id
+        ]);
+        factory(Game::class, 5)->create([
             'team_id' => $team->id
         ]);
     }

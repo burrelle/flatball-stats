@@ -1,16 +1,19 @@
 <script>
+import PlayersTableHeader from "./PlayersTableHeader.vue";
 export default {
   props: ["cutters"],
   render() {
     return (
-      <div>
+      <table>
+        <PlayersTableHeader />
         {Object.keys(this.cutters).map(cutter => (
-          <p>
-            {this.cutters[cutter].name} - {this.cutters[cutter].number} -{" "}
-            {this.cutters[cutter].gender}
-          </p>
+          <tr>
+            <td class="p-1">{this.cutters[cutter].number}.</td>
+            <td class="p-1">{this.cutters[cutter].name}</td>
+            <td class="p-1">{this.cutters[cutter].gender}</td>
+          </tr>
         ))}
-      </div>
+      </table>
     );
   }
 };

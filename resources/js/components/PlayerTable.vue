@@ -4,8 +4,8 @@ import AllPlayersTable from "./AllPlayersTable.vue";
 import HandlersTable from "./HandlersTable.vue";
 
 const ALL = "all";
-const HANDLER = "handler"
-const CUTTER = "cutter"
+const HANDLER = "handler";
+const CUTTER = "cutter";
 
 export default {
   data: () => ({
@@ -30,42 +30,41 @@ export default {
 
     return (
       <div>
-        <span
-          class={this.selected === ALL && "active"}
-          onClick={() => (this.selected = ALL)}
-        >
-          All Players
-        </span>
-        <span
-          class={this.selected === HANDLER && "active"}
-          onClick={() => (this.selected = HANDLER)}
-        >
-          Handlers
-        </span>
-        <span
-          class={this.selected === CUTTER && "active"}
-          onClick={() => (this.selected = CUTTER)}
-        >
-          Cutters
-        </span>
+        <div class="mb-2">
+          <span
+            class={
+              this.selected === ALL
+                ? "font-bold mr-1 text-blue-darker"
+                : "hover:underline mr-1 cursor-pointer"
+            }
+            onClick={() => (this.selected = ALL)}
+          >
+            All Players
+          </span>
+          <span
+            class={
+              this.selected === HANDLER
+                ? "font-bold mr-1 text-blue-darker"
+                : "hover:underline mr-1 cursor-pointer"
+            }
+            onClick={() => (this.selected = HANDLER)}
+          >
+            Handlers
+          </span>
+          <span
+            class={
+              this.selected === CUTTER
+                ? "font-bold mr-1 text-blue-darker"
+                : "hover:underline mr-1 cursor-pointer"
+            }
+            onClick={() => (this.selected = CUTTER)}
+          >
+            Cutters
+          </span>
+        </div>
         {displayFilter(this.selected, players, this.handlers, this.cutters)}
       </div>
     );
   }
 };
 </script>
-
-<style>
-span {
-  margin-right: 0.25rem;
-  cursor: pointer;
-}
-
-span:hover {
-  text-decoration: underline;
-}
-
-.active {
-  color: blue;
-}
-</style>

@@ -1,15 +1,19 @@
 <script>
+import PlayersTableHeader from './PlayersTableHeader.vue';
 export default {
   props: ["players"],
   render() {
     return (
-      <div>
+      <table>
+        <PlayersTableHeader />
         {this.players.map(({ name, number, gender }) => (
-          <p>
-            {name} - {number} - {gender}
-          </p>
+          <tr>
+            <td class="p-1">{number}.</td>
+            <td class="p-1">{name}</td>
+            <td class="p-1">{gender}</td>
+          </tr>
         ))}
-      </div>
+      </table>
     );
   }
 };

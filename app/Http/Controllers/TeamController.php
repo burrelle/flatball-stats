@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Team;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Access\AuthorizationException;
 
 class TeamController extends Controller
 {

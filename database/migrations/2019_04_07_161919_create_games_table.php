@@ -18,6 +18,8 @@ class CreateGamesTable extends Migration
             $table->unsignedInteger('team_id');
             $table->string('opponent');
             $table->string('tournament');
+            $table->integer('score')->nullable();
+            $table->integer('opponent_score')->nullable();
             $table->timestamps();
         });
     }
