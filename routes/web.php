@@ -27,6 +27,7 @@ Route::post('/players', 'PlayerController@store')->middleware('auth');
 Route::get('/games/new', 'GameController@create')->middleware('auth');
 Route::post('/games', 'GameController@store')->middleware('auth');
 Route::get('/games/{game}', 'GameController@show');
+Route::get('/games', 'GameController@index');
 
 Auth::routes();
 

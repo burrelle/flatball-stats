@@ -7,6 +7,12 @@ use App\Game;
 
 class GameController extends Controller
 {
+    public function index()
+    {
+        $games = Game::all();
+        return view('game.index', compact('games'));
+    }
+
     public function create()
     {
         return view('game.create');

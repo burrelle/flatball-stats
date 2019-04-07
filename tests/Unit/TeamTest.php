@@ -60,4 +60,10 @@ class TeamTest extends TestCase
     {
         $this->assertCount(3, $this->cutters);
     }
+
+    /** @test */
+    public function teamHasManyGames()
+    {
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->team->games);
+    }
 }

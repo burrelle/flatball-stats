@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Game;
+use App\User;
 use App\Player;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +19,11 @@ class Team extends Model
     public function players()
     {
         return $this->hasMany(Player::class);
+    }
+
+    public function games()
+    {
+        return $this->hasMany(Game::class);
     }
 
     public function getHandlers()

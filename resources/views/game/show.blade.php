@@ -1,0 +1,2 @@
+{{ $game->opponent }}
+{{ $game->tournament }}
