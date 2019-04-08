@@ -8,5 +8,8 @@
 </div>
 
 @foreach($game->team->players as $player)
-<p>{{ $player->name }}</p>
+<p>{{ $player->name }} - {{ dd($player->passerStats($game->id)) }}</p>
+
 @endforeach @endsection
+
+

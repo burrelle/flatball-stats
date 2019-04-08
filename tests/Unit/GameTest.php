@@ -6,6 +6,8 @@ use App\Game;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Team;
+use Illuminate\Support\Collection as IlluminateCollection;
+use Illuminate\Database\Eloquent\Collection;
 
 class GameTest extends TestCase
 {
@@ -24,5 +26,11 @@ class GameTest extends TestCase
     public function gameBelongsToTeam()
     {
         $this->assertInstanceOf(Team::class, $this->game->team);
+    }
+
+    /** @test */
+    public function gameHasManyStatistics()
+    {
+        $this->assertInstanceOf(Collection::class, $this->game->statistics);
     }
 }

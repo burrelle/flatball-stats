@@ -4,15 +4,14 @@ namespace Tests\Unit;
 
 use App\Team;
 use App\User;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Player;
+use Tests\TestCase;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TeamTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
 
     /** @var Team */
     private $team;
@@ -64,6 +63,6 @@ class TeamTest extends TestCase
     /** @test */
     public function teamHasManyGames()
     {
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->team->games);
+        $this->assertInstanceOf(Collection::class, $this->team->games);
     }
 }
