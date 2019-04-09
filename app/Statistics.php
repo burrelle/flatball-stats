@@ -24,4 +24,40 @@ class Statistics extends Model
     {
         return $this->belongsTo(Game::class);
     }
+
+    public function scopeCompletions($query, $passerId)
+    {
+        return $query
+            ->where('passer_id', $passerId)
+            ->get()
+            ->sum('catch');
+    }
+
+    public function scopeThrowaways($query, $passerId)
+    {
+        return $query
+            ->where('passer_id', $passerId)
+            ->get()
+            ->sum('throwaway');
+    }
+
+    public function scopeAssists($query, $passerId)
+    {
+        return $query
+            ->where('passer_id', $passerId)
+            ->get()
+            ->sum('goal');
+    }
+
+    public function scopePassingPercentage($query, $passerId)
+    {
+        $completions = $this->scopeCompletions($query, $passerId);
+        $throwaways = $this->scopeThrowaways($query, $passerId);
+
+        if ($completions === 0 && $throwaways === 0) {
+            return 0;
+        }
+
+        return round(($completions / ($completions + $throwaways)) * 100);
+    }
 }

@@ -7,9 +7,32 @@
     <h3>{{ $game->score }} - {{ $game->opponent_score }}</h3>
 </div>
 
-@foreach($game->team->players as $player)
-<p>{{ $player->name }}</p>
-
-@endforeach @endsection
-
-
+<table class="w-screen">
+    <thead class="text-left">
+        <tr>
+            <th class="p-2">Name</th>
+            <th class="p-2">Completions</th>
+            <th class="p-2">Throwaways</th>
+            <th class="p-2">Assists</th>
+            <th class="p-2">Passing Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($game->team->players as $player)
+        <tr>
+            <td class="p-2">{{ $player->name }}</td>
+            <td class="p-2">
+                {{ $game->statistics()->completions($player->id) }}
+            </td>
+            <td class="p-2">
+                {{ $game->statistics()->throwaways($player->id) }}
+            </td>
+            <td class="p-2">{{ $game->statistics()->assists($player->id) }}</td>
+            <td class="p-2">
+                {{ $game->statistics()->passingPercentage($player->id) }} %
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+@endsection
