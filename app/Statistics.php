@@ -60,4 +60,40 @@ class Statistics extends Model
 
         return round(($completions / ($completions + $throwaways)) * 100);
     }
+
+    public function scopeGoals($query, $receiverId)
+    {
+        return $query
+            ->where('receiver_id', $receiverId)
+            ->get()
+            ->sum('goal');
+    }
+
+    public function scopeCatches($query, $receiverId)
+    {
+        return $query
+            ->where('receiver_id', $receiverId)
+            ->get()
+            ->sum('catch');
+    }
+
+    public function scopeDrops($query, $receiverId)
+    {
+        return $query
+            ->where('receiver_id', $receiverId)
+            ->get()
+            ->sum('drop');
+    }
+
+    public function scopeCatchingPercentage($query, $receiverId)
+    {
+        $catches = $this->scopeCatches($query, $receiverId);
+        $drops = $this->scopeDrops($query, $receiverId);
+
+        if ($catches === 0 && $drops === 0) {
+            return 0;
+        }
+
+        return round(($catches / ($catches + $drops)) * 100);
+    }
 }

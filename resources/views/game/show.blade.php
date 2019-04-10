@@ -15,6 +15,10 @@
             <th class="p-2">Throwaways</th>
             <th class="p-2">Assists</th>
             <th class="p-2">Passing Percentage</th>
+            <th class="p-2">Goals</th>
+            <th class="p-2">Catches</th>
+            <th class="p-2">Drops</th>
+            <th class="p-2">Catching Percentage</th>
         </tr>
     </thead>
     <tbody>
@@ -30,6 +34,18 @@
             <td class="p-2">{{ $game->statistics()->assists($player->id) }}</td>
             <td class="p-2">
                 {{ $game->statistics()->passingPercentage($player->id) }} %
+            </td>
+            <td class="p-2">
+                {{ $game->statistics()->goals($player->id) }}
+            </td>
+            <td class="p-2">
+                {{ $game->statistics()->catches($player->id) }}
+            </td>
+            <td class="p-2">
+                {{ $game->statistics()->drops($player->id) }}
+            </td>
+            <td class="p-2">
+                {{ $game->statistics()->catchingPercentage($player->id) }}%
             </td>
         </tr>
         @endforeach
